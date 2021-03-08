@@ -1,0 +1,2 @@
+# Sanguosha
+Toy version
