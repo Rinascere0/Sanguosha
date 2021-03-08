@@ -1,5 +1,3 @@
-package sanguosha;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -7,18 +5,18 @@ import java.util.Scanner;
 public class Card {
 	int color;
 	int num;
-	int type; //å¡ç‰Œç±»å‹
-	String name; //å¡ç‰Œä½¿ç”¨å
-	Card origin; //è¢«å½“ä½œå…¶ä»–ç‰Œä½¿ç”¨æ—¶ï¼ŒæŒ‡å‘åŸå¡ç‰Œ
-	String equip; //è£…å¤‡ä½ç½®
-	boolean stat; //ä½¿ç”¨åæ˜¯å¦è¢«æ”¶èµ°
+	int type; //¿¨ÅÆÀàĞÍ
+	String name; //¿¨ÅÆÊ¹ÓÃÃû
+	Card origin; //±»µ±×÷ÆäËûÅÆÊ¹ÓÃÊ±£¬Ö¸ÏòÔ­¿¨ÅÆ
+	String equip; //×°±¸Î»ÖÃ
+	boolean stat; //Ê¹ÓÃºóÊÇ·ñ±»ÊÕ×ß
 	Scanner sc;
 	ArrayList<Player>players;
 	ArrayList<Card>all_cards;
 	ArrayList<Card>sub;
 	Frame f;
 	String skill;
-	Card(int c,int n,String s) //åˆå§‹åŒ–
+	Card(int c,int n,String s) //³õÊ¼»¯
 	{
 		color=c;
 		num=n;
@@ -62,20 +60,20 @@ public class Card {
 		return "("+get_name()+")";
 	}
 	
-	void print() //è¾“å‡ºå¡ç‰Œå…·ä½“å†…å®¹
+	void print() //Êä³ö¿¨ÅÆ¾ßÌåÄÚÈİ
 	{
 		System.out.print("("+get_name()+")");
 	}
 	
-	String get_color() //è·å¾—å¡ç‰ŒèŠ±è‰²
+	String get_color() //»ñµÃ¿¨ÅÆ»¨É«
 	{
 		String c;
 		switch(color)
 		{
-			case 0:c="é»‘æ¡ƒ";break;
-			case 1:c="çº¢æ¡ƒ";break;
-			case 2:c="æ¢…èŠ±";break;
-			case 3:c="æ–¹ç‰‡";break;
+			case 0:c="ºÚÌÒ";break;
+			case 1:c="ºìÌÒ";break;
+			case 2:c="Ã·»¨";break;
+			case 3:c="·½Æ¬";break;
 			default:c="";
 		}
 		return c;
@@ -84,12 +82,12 @@ public class Card {
 	String get_equip()
 	{
 		if (equip==null)
-			return "æ‰‹ç‰Œ";
+			return "ÊÖÅÆ";
 		else
 			return equip;
 	}
 	
-	String get_name() //è·å¾—å¡ç‰ŒèŠ±è‰²+æ–‡å­—
+	String get_name() //»ñµÃ¿¨ÅÆ»¨É«+ÎÄ×Ö
 	{
 		String d;
 		switch (num)
@@ -118,24 +116,24 @@ public class Card {
 		
 	}
 	
-	void show() //æ‰“å°å¡ç‰ŒèŠ±è‰²+æ–‡å­—
+	void show() //´òÓ¡¿¨ÅÆ»¨É«+ÎÄ×Ö
 	{
 		System.out.print(get_name());
 	}
 	
-	void println() //æ‰“å°å‡ºç‰Œæ—¶å¡ç‰Œå…·ä½“æ–‡å­—
+	void println() //´òÓ¡³öÅÆÊ±¿¨ÅÆ¾ßÌåÎÄ×Ö
 	{
 		System.out.println("("+get_name()+")");
 	}
 	
-	String show_color() //è·å¾—å¡ç‰ŒèŠ±è‰²ï¼ˆç”¨äºåˆ¤å®šï¼‰
+	String show_color() //»ñµÃ¿¨ÅÆ»¨É«£¨ÓÃÓÚÅĞ¶¨£©
 	{
-		return "ã€"+get_color()+"ã€‘";
+		return "¡¾"+get_color()+"¡¿";
 	}
 	
-	String showname() //è·å¾—å¡ç‰Œåç§°ï¼ˆç”¨äºå‡ºç‰Œï¼‰
+	String showname() //»ñµÃ¿¨ÅÆÃû³Æ£¨ÓÃÓÚ³öÅÆ£©
 	{
-		return "ã€"+name+"ã€‘"; 
+		return "¡¾"+name+"¡¿"; 
 	}
 	
 	void print_origin()
@@ -145,18 +143,18 @@ public class Card {
 		{
 			System.out.print("("+sub.get(0).get_name());
 			for (int i=1;i<sub.size();i++)
-				System.out.print("ã€"+sub.get(i).get_name());
+				System.out.print("¡¢"+sub.get(i).get_name());
 			System.out.print(")");
 			
 		}
 	}
-	//ä½¿ç”¨å¡ç‰Œï¼ˆè™šå‡½æ•°ï¼‰
+	//Ê¹ÓÃ¿¨ÅÆ£¨Ğéº¯Êı£©
 	void use(Player p,Scanner sc) throws InterruptedException, Exception
 	{
 
 	} 
 
-	Card get_card(Player target)  //éšæœºè·å¾—ç›®æ ‡ä¸€å¼ ç‰Œ
+	Card get_card(Player target)  //Ëæ»ú»ñµÃÄ¿±êÒ»ÕÅÅÆ
 	{
 		Card c;
 		ArrayList<Integer>index=new ArrayList<Integer>();
@@ -193,12 +191,12 @@ public class Card {
 			}
 		}
 	
-	Boolean is_kill()  //åˆ¤æ–­æ­¤ç‰Œæ˜¯å¦ä¸ºã€æ€ã€‘
+	Boolean is_kill()  //ÅĞ¶Ï´ËÅÆÊÇ·ñÎª¡¾É±¡¿
 	{
-		return name.equals("æ€")||name.equals("é›·æ€")||name.equals("ç«æ€");
+		return name.equals("É±")||name.equals("À×É±")||name.equals("»ğÉ±");
 	}
 	
-	Player input_target(String s,ArrayList<Player> players)  //è¾“å…¥ä¸€ä¸ªç›®æ ‡
+	Player input_target(String s,ArrayList<Player> players)  //ÊäÈëÒ»¸öÄ¿±ê
 	{
 		System.out.print(s);
 		Scanner sc=new Scanner(System.in);
@@ -207,48 +205,48 @@ public class Card {
 		if (index>0) return players.get(index); else return null;
 	}
 	
-	void drop(Player p,int type) //ä¸€å¼ ç‰Œç¦»å¼€åŒºåŸŸ
+	void drop(Player p,int type) //Ò»ÕÅÅÆÀë¿ªÇøÓò
 	{
 		Player target;
-		if (get_equip().equals("æ­¦å™¨")&&name.equals("è¯¸è‘›è¿å¼©")) p.maxkill=1;
+		if (get_equip().equals("ÎäÆ÷")&&name.equals("Öî¸ğÁ¬åó")) p.maxkill=1;
 		
-		if (p.name.equals("è¯¸è‘›äº®")&&p.cards.isEmpty()) System.out.println(">> è¯¸è‘›äº® è§¦å‘ã€ç©ºåŸã€‘");
-		if (p.name.equals("é™†é€Š")&&p.cards.isEmpty())
+		if (p.name.equals("Öî¸ğÁÁ")&&p.cards.isEmpty()) System.out.println(">> Öî¸ğÁÁ ´¥·¢¡¾¿Õ³Ç¡¿");
+		if (p.name.equals("Â½Ñ·")&&p.cards.isEmpty())
 		{
-			System.out.println("é™†é€Š å‘åŠ¨ã€è¿è¥ã€‘ï¼Œæ‘¸èµ·ä¸€å¼ ç‰Œ");
+			System.out.println("Â½Ñ· ·¢¶¯¡¾Á¬Óª¡¿£¬ÃşÆğÒ»ÕÅÅÆ");
 			p.draw_card();
 			f.update(p);
 		}
 		
-		if (p.name.equals("å¼ æ˜¥å")&&p.cards.size()<p.maxhp-p.hp)
+		if (p.name.equals("ÕÅ´º»ª")&&p.cards.size()<p.maxhp-p.hp)
 		{
-			System.out.println(">> å¼ æ˜¥å å‘åŠ¨ã€ä¼¤é€ã€‘ï¼Œæ‘¸èµ·"+String.valueOf(p.maxhp-p.hp)+"å¼ ç‰Œ");
+			System.out.println(">> ÕÅ´º»ª ·¢¶¯¡¾ÉËÊÅ¡¿£¬ÃşÆğ"+String.valueOf(p.maxhp-p.hp)+"ÕÅÅÆ");
 			for (int i=0;i<p.maxhp-p.hp;i++)
 				p.draw_card();
 		}
 		
-		if (p.name.equals("å­™å°šé¦™")&&equip!=null&&type>1)
+		if (p.name.equals("ËïÉĞÏã")&&equip!=null&&type>1)
 		{
-			System.out.print("å­™å°šé¦™ å‘åŠ¨äº†<æ­å§¬>ï¼Œæ‘¸èµ·ä¸¤å¼ ç‰Œ");
+			System.out.print("ËïÉĞÏã ·¢¶¯ÁË<èÉ¼§>£¬ÃşÆğÁ½ÕÅÅÆ");
 			p.draw_card();
 			p.draw_card();
 		}
 		
-		if (p.name.equals("é‚“è‰¾")&&p.no!=f.current)
+		if (p.name.equals("µË°¬")&&p.no!=f.current)
 		{
-			if (p.bot||p.input("æ˜¯å¦å‘åŠ¨ã€å±¯ç”°ã€‘:",2)==1)
-				p.test("å±¯ç”°");
+			if (p.bot||p.input("ÊÇ·ñ·¢¶¯¡¾ÍÍÌï¡¿:",2)==1)
+				p.test("ÍÍÌï");
 		}
 		
-		target=p.search_player("æ›¹æ¤");
+		target=p.search_player("²ÜÖ²");
 		if (target!=null&&!target.equals(p)&&type==1)
 		{
 			if (sub==null&&color==2)
 			{
 				stat=false;
-				System.out.print(">> æ›¹æ¤ å‘åŠ¨è½è‹±ï¼Œè·å¾—");
+				System.out.print(">> ²ÜÖ² ·¢¶¯ÂäÓ¢£¬»ñµÃ");
 				println();
-				p.search_player("æ›¹æ¤").cards.add(this.origin);
+				p.search_player("²ÜÖ²").cards.add(this.origin);
 			}
 			else
 			{
@@ -257,9 +255,9 @@ public class Card {
 					if (sub.get(i).color==2)
 					{
 						sub.get(i).stat=false;
-						System.out.print(">> æ›¹æ¤ å‘åŠ¨è½è‹±ï¼Œè·å¾—");
+						System.out.print(">> ²ÜÖ² ·¢¶¯ÂäÓ¢£¬»ñµÃ");
 						println();
-						p.search_player("æ›¹æ¤").cards.add(sub.get(i));
+						p.search_player("²ÜÖ²").cards.add(sub.get(i));
 					}
 				}
 			}
@@ -269,7 +267,7 @@ public class Card {
 		p.fetch(all_cards,this);
 	}
 	
-	Player input_target(String s,ArrayList<Player> players,ArrayList<Player> targets)  //è¾“å…¥ä¸€ä¸ªç›®æ ‡
+	Player input_target(String s,ArrayList<Player> players,ArrayList<Player> targets)  //ÊäÈëÒ»¸öÄ¿±ê
 	{
 		System.out.print(s);
 		Scanner sc=new Scanner(System.in);
@@ -282,16 +280,16 @@ public class Card {
 	{
 		switch(s)
 		{
-			case "é—ªç”µ":if (color==0&&num>1&&num<10) return true;break;
-			case "ä¹ä¸æ€èœ€":if (color!=1) return true;break;
-			case "å…µç²®å¯¸æ–­":if (color!=2) return true;break;
-			case "å…«å¦é˜µ":if (color%2==1) return true;break;
-			case "æ´›ç¥":if (color%2==0) return true;break;
-			case "æ½œè¢­":if (color!=1) return true;break;
-			case "åˆšçƒˆ":if (color!=1) return true;break;
-			case "å†èµ·":if (color==1) return true;break;
-			case "é›·å‡»":if (color==0) return true;break;
-			case "å±¯ç”°":if (color!=1) return true;break;
+			case "ÉÁµç":if (color==0&&num>1&&num<10) return true;break;
+			case "ÀÖ²»Ë¼Êñ":if (color!=1) return true;break;
+			case "±øÁ¸´ç¶Ï":if (color!=2) return true;break;
+			case "°ËØÔÕó":if (color%2==1) return true;break;
+			case "ÂåÉñ":if (color%2==0) return true;break;
+			case "Ç±Ï®":if (color!=1) return true;break;
+			case "¸ÕÁÒ":if (color!=1) return true;break;
+			case "ÔÙÆğ":if (color==1) return true;break;
+			case "À×»÷":if (color==0) return true;break;
+			case "ÍÍÌï":if (color!=1) return true;break;
 		}
 		return false;
 	}

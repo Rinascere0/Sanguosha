@@ -1,5 +1,3 @@
-package sanguosha;
-
 import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,11 +21,11 @@ public class Game {
 	static ArrayList<Character> characters;
 	static HashMap<String,Integer> info;
 	static ArrayList<Card> all_cards;
-	public static void init_card() throws IOException
+	public static void init_card(String path) throws IOException
 	{
 		all_cards=new ArrayList<Card>();
 		int x;
-		BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream("D:\\server\\card.txt"),"UTF-8"));  
+		BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(path+"\\data\\card.txt"),"UTF-8"));  
 		for (int i=0;i<160;i++)
 		{
 			x=Integer.valueOf(br.readLine());
@@ -46,13 +44,13 @@ public class Game {
 
 	}
 	
-	public static void init_character(Scanner sc) throws IOException
+	public static void init_character(Scanner sc,String path) throws IOException
 	{
 		characters=new ArrayList<Character>();
 		Character c;
 		String s;
 		int x;
-		BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream("D:\\server\\character.txt"),"UTF-8"));  
+		BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(path+"\\data\\character.txt"),"UTF-8"));  
 		for (int i=0;i<66;i++)
 		{
 			s=br.readLine();
@@ -126,8 +124,10 @@ public class Game {
 	public static void main(String[] args) throws Exception
 	{
 		Scanner sc = new Scanner(System.in); 
-		init_card();
-		init_character(sc);
+		String path="D:\\git-work\\sanguosha";
+		if (args.length>0) path=args[0];
+		init_card(path);
+		init_character(sc,path);
 		init_player(sc);
 		
 		Frame frame=new Frame(players);	
